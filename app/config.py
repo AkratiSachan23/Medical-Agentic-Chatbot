@@ -22,7 +22,11 @@ class Settings(BaseSettings):
     openai_api_key: str = ''
     pinecone_api_key: str = ''
     tavily_api_key: str = ''
-    pinecone_index: str = 'medical-agent-demo'
+    # This index uses the 384-dimension local embedding model below.  Do not
+    # point it at an existing 1536-dimension OpenAI embedding index.
+    pinecone_index: str = 'medical-agent-local'
+    embedding_model: str = 'sentence-transformers/all-MiniLM-L6-v2'
+    embedding_dimension: int = 384
     openai_chat_model: str = 'gpt-4.1-mini'
     openai_embed_model: str = 'text-embedding-3-small'
     openai_vision_model: str = 'gpt-4.1-mini'
